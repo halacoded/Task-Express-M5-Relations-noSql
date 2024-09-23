@@ -1,8 +1,10 @@
-const { model, Schema } = require('mongoose');
+const { model, Schema } = require("mongoose");
+const author = require("./Auther");
 
 const PostSchema = new Schema({
   title: String,
   body: String,
+  authorId: { type: Schema.Types.ObjectId, ref: "author" },
 });
-
-module.exports = model('Post', PostSchema);
+const Post = model("Post", PostSchema);
+module.exports = Post;
