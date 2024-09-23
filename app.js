@@ -4,6 +4,9 @@ const postsRoutes = require("./api/posts/posts.routes");
 const connectDb = require("./database");
 const authorRoute = require("./api/author/authoer.routes");
 connectDb();
+const dotenv = require("dotenv");
+dotenv.config();
+Port = process.env.PORT;
 app.use(express.json());
 app.use("/posts", postsRoutes);
 app.use("/author", authorRoute);
@@ -18,6 +21,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(8000, () => {
+app.listen(Port, () => {
   console.log("The application is running on localhost:8000");
 });
